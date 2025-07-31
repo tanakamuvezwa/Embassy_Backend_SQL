@@ -1,0 +1,935 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Embajada - Embajada de Guinea Ecuatorial en Turquía</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #006633; /* Verde de la bandera de Guinea Ecuatorial */
+            --secondary: #0072c6;
+            --accent: #ce1126; /* Rojo de la bandera de Guinea Ecuatorial */
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --neutral: #64748b;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        .bg-primary { background-color: var(--primary); }
+        .bg-secondary { background-color: var(--secondary); }
+        .bg-accent { background-color: var(--accent); }
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        .text-accent { color: var(--accent); }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 3px;
+            bottom: -8px;
+            left: 0;
+            background-color: var(--accent);
+        }
+        
+        .flag-icon {
+            width: 24px;
+            height: 16px;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        /* Flags SVG */
+        .flag-es {
+            background: linear-gradient(to bottom, #c60b1e 25%, #ffc400 50%, #c60b1e 25%);
+        }
+        
+        .flag-fr {
+            background: linear-gradient(to right, #0055a4 33.3%, #ffffff 33.3%, #ffffff 66.6%, #ef4135 66.6%);
+        }
+        
+        .flag-en {
+            background-color: #012169;
+            background-image: 
+                linear-gradient(#ffffff 10%, transparent 10%, transparent 90%, #ffffff 90%),
+                linear-gradient(90deg, #ffffff 10%, transparent 10%, transparent 90%, #ffffff 90%),
+                linear-gradient(45deg, transparent 43%, #C8102E 43%, #C8102E 57%, transparent 57%),
+                linear-gradient(-45deg, transparent 43%, #C8102E 43%, #C8102E 57%, transparent 57%);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .flag-tr {
+            background-color: #E30A17;
+            position: relative;
+        }
+        
+        .flag-tr::before {
+            content: "";
+            position: absolute;
+            width: 40%;
+            height: 40%;
+            border-radius: 50%;
+            background-color: white;
+            top: 30%;
+            left: 30%;
+        }
+        
+        .flag-tr::after {
+            content: "";
+            position: absolute;
+            width: 32%;
+            height: 32%;
+            border-radius: 50%;
+            background-color: #E30A17;
+            top: 34%;
+            left: 38%;
+        }
+        
+        /* Modern button styles */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(0, 102, 51, 0.25);
+        }
+        
+        .btn-primary:hover {
+            background-color: #005528;
+            box-shadow: 0 6px 20px rgba(0, 102, 51, 0.35);
+            transform: translateY(-2px);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 14px rgba(206, 17, 38, 0.25);
+        }
+        
+        .btn-accent:hover {
+            background-color: #b00e20;
+            box-shadow: 0 6px 20px rgba(206, 17, 38, 0.35);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Modern card styles */
+        .modern-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .modern-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        /* Hero section background (not strictly needed for sub-page but kept for consistency) */
+        .hero-bg {
+            position: relative;
+            background-color: black; /* Fallback color */
+            overflow: hidden; /* Ensure images don't overflow */
+        }
+
+        .hero-bg .carousel-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; /* Smooth fade effect */
+        }
+
+        .hero-bg .carousel-image.active {
+            opacity: 1;
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+        
+        /* Modern features */
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, rgba(0, 102, 51, 0.1) 0%, rgba(0, 102, 51, 0.2) 100%);
+        }
+        
+        /* Floating elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Modern tabs */
+        .tab-active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        /* Modern badge */
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .badge-primary {
+            background-color: rgba(0, 102, 51, 0.1);
+            color: var(--primary);
+        }
+        
+        .badge-accent {
+            background-color: rgba(206, 17, 38, 0.1);
+            color: var(--accent);
+        }
+        
+        .badge-secondary {
+            background-color: rgba(0, 114, 198, 0.1);
+            color: var(--secondary);
+        }
+        
+        /* Modern divider */
+        .divider {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
+            margin: 2rem 0;
+        }
+        
+        /* Hover effect for cards */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dropdown specific styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            top: 100%; /* Position below the parent link */
+            left: 0;
+            margin-top: 8px; /* Space between link and dropdown */
+            padding: 8px 0; /* Padding inside dropdown */
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            color: var(--dark);
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+        /* Mobile menu adjustment for dropdown */
+        #mobile-menu .dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        #mobile-menu .dropdown-menu {
+            position: static; /* Remove absolute positioning for mobile */
+            box-shadow: none;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            border-radius: 0;
+            background-color: transparent;
+        }
+        #mobile-menu .dropdown-menu a {
+            padding-left: 32px; /* Indent sub-items */
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar with Language Selector and Quick Links -->
+    <div class="bg-white border-b border-gray-100">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-sm text-gray-600 hover:text-primary transition-colors">
+                    <i class="fas fa-phone-alt mr-1 text-xs"></i> Emergencias: (+90) 312 490 1647
+                </a>
+                <a href="#contacto-footer" class="text-sm text-gray-600 hover:text-primary transition-colors">
+                    <i class="fas fa-envelope mr-1 text-xs"></i> Contacto
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="mr-4">
+                       <img src="Flag.jpg" alt="bandera de guinea ecuatorial" class="w-24 h-16 rounded-lg border-2 border-primary object-cover">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">Embajada de Guinea Ecuatorial</h1>
+                        <p class="text-sm text-gray-500">en Turquía</p>
+                    </div>
+                </div>
+                
+                <nav class="hidden lg:flex space-x-8 header-nav">
+                    <!-- Enlace a la página principal -->
+                    <a href="index.html" class="nav-link font-medium text-gray-600 hover:text-blue-600 transition-colors">Inicio</a>
+                    
+                    <!-- Dropdown para "La Embajada" -->
+                    <div class="dropdown relative">
+                        <button class="nav-link font-medium text-gray-600 hover:text-blue-600 transition-colors inline-flex items-center" id="dropdownEmbajadaToggle" aria-haspopup="true" aria-expanded="false">
+                            La Embajada
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu hidden" id="dropdownEmbajadaMenu" role="menu" aria-labelledby="dropdownEmbajadaToggle">
+                            <a href="la-embajada.html#historia-embajada" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">Historia de la Embajada</a>
+                            <a href="la-embajada.html#estructura-equipo" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">Estructura y Equipo</a>
+                            <a href="la-embajada.html#mision-vision" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">Misión y Visión</a>
+                            <a href="la-embajada.html#contacto-embajada-detallado" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">Contacto Detallado</a>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown para "Servicios Consulares" -->
+                    <div class="dropdown relative">
+                        <button class="nav-link font-medium text-gray-600 hover:text-blue-600 transition-colors inline-flex items-center" id="dropdownServiciosToggle" aria-haspopup="true" aria-expanded="false">
+                            Servicios Consulares
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu hidden" id="dropdownServiciosMenu" role="menu" aria-labelledby="dropdownServiciosToggle">
+                            <a href="#pasaportes-consulares" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">Pasaportes</a>
+                            <a href="#visados-consulares" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">Visados</a>
+                            <a href="#legalizaciones-consulares" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">Legalizaciones</a>
+                            <a href="#registro-consular-seccion" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600">Registro Consular</a>
+                        </div>
+                    </div>
+                    
+                    <a href="index.html#comunidad" class="nav-link font-medium text-gray-600 hover:text-blue-600 transition-colors">Comunidad</a>
+                    <a href="index.html#noticias" class="nav-link font-medium text-gray-600 hover:text-blue-600 transition-colors">Noticias</a>
+                    <a href="index.html#contacto" class="nav-link font-medium text-gray-600 hover:text-blue-600 transition-colors">Contacto</a>
+                </nav>
+        
+                <button class="lg:hidden focus:outline-none" id="menu-toggle">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div class="lg:hidden hidden bg-white border-t border-gray-100" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="index.html" class="block text-gray-700 hover:text-blue-600 py-2">Inicio</a>
+                
+                <!-- Dropdown para "La Embajada" en el menú móvil -->
+                <div class="relative dropdown">
+                    <button class="dropdown-toggle block text-gray-700 hover:text-blue-600 py-2 w-full text-left" id="mobileDropdownEmbajadaToggle" aria-haspopup="true" aria-expanded="false">
+                        La Embajada
+                        <svg class="ml-2 w-4 h-4 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu hidden" id="mobileDropdownEmbajadaMenu" role="menu" aria-labelledby="mobileDropdownEmbajadaToggle">
+                        <a href="la-embajada.html#historia-embajada" class="block text-gray-700 hover:text-blue-600 py-2">Historia de la Embajada</a>
+                        <a href="la-embajada.html#estructura-equipo" class="block text-gray-700 hover:text-blue-600 py-2">Estructura y Equipo</a>
+                        <a href="la-embajada.html#mision-vision" class="block text-gray-700 hover:text-blue-600 py-2">Misión y Visión</a>
+                        <a href="la-embajada.html#contacto-embajada-detallado" class="block text-gray-700 hover:text-blue-600 py-2">Contacto Detallado</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown para "Servicios Consulares" en el menú móvil -->
+                <div class="relative dropdown">
+                    <button class="dropdown-toggle block text-gray-700 hover:text-blue-600 py-2 w-full text-left" id="mobileDropdownServiciosToggle" aria-haspopup="true" aria-expanded="false">
+                        Servicios Consulares
+                        <svg class="ml-2 w-4 h-4 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu hidden" id="mobileDropdownServiciosMenu" role="menu" aria-labelledby="mobileDropdownServiciosToggle">
+                        <a href="#pasaportes-consulares" class="block text-gray-700 hover:text-blue-600 py-2">Pasaportes</a>
+                        <a href="#visados-consulares" class="block text-gray-700 hover:text-blue-600 py-2">Visados</a>
+                        <a href="#legalizaciones-consulares" class="block text-gray-700 hover:text-blue-600 py-2">Legalizaciones</a>
+                        <a href="#registro-consular-seccion" class="block text-gray-700 hover:text-blue-600 py-2">Registro Consular</a>
+                    </div>
+                </div>
+
+                <a href="index.html#comunidad" class="block text-gray-700 hover:text-blue-600 py-2">Comunidad</a>
+                <a href="index.html#noticias" class="block text-gray-700 hover:text-blue-600 py-2">Noticias</a>
+                <a href="index.html#contacto" class="block text-gray-700 hover:text-blue-600 py-2">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Título principal de la página "Servicios Consulares" -->
+        <section class="py-16 bg-white text-center">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 section-title">Servicios Consulares</h1>
+                <p class="mt-4 text-lg text-gray-600">Ofrecemos una amplia gama de servicios para ciudadanos ecuatoguineanos y extranjeros.</p>
+            </div>
+        </section>
+
+        <!-- Sección: Pasaportes -->
+        <section id="pasaportes-consulares" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5">
+                        <div class="mx-auto lg:mx-0 w-full max-w-sm">
+                            <img src="pasaportes.webp" alt="Imagen de pasaportes" class="w-full h-auto object-cover rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <div class="py-4 md:py-8"> 
+                            <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wider">
+                                DOCUMENTACIÓN
+                            </span>
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                                Pasaportes
+                            </h2>
+                            <div class="text-gray-700 space-y-4 text-base md:text-lg leading-relaxed">
+                                <p>La Embajada de Guinea Ecuatorial en Turquía ofrece servicios de expedición y renovación de pasaportes para ciudadanos ecuatoguineanos residentes en el país o en tránsito.</p>
+                                <h3 class="font-bold text-gray-800 text-xl mt-8 mb-3">Requisitos Generales:</h3>
+                                <ul class="list-disc list-inside space-y-2 ml-4">
+                                    <li>Formulario de solicitud debidamente cumplimentado.</li>
+                                    <li>Copia del pasaporte anterior (si es renovación).</li>
+                                    <li>Dos fotografías recientes tamaño pasaporte (fondo blanco).</li>
+                                    <li>Copia del DNI o partida de nacimiento.</li>
+                                    <li>Comprobante de residencia en Turquía (si aplica).</li>
+                                    <li>Pago de la tasa consular correspondiente.</li>
+                                </ul>
+                                <p class="mt-4">Para casos de primera expedición o pérdida, por favor, contacte con la sección consular para obtener una lista detallada de requisitos adicionales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Visados -->
+        <section id="visados-consulares" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 order-2 lg:order-1">
+                        <div class="py-4 md:py-8"> 
+                            <span class="inline-block bg-secondary/10 text-secondary text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wider">
+                                VIAJES
+                            </span>
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                                Visados
+                            </h2>
+                            <div class="text-gray-700 space-y-4 text-base md:text-lg leading-relaxed">
+                                <p>Facilitamos la tramitación de visados para ciudadanos extranjeros que deseen viajar a Guinea Ecuatorial por motivos de turismo, negocios, estudios o tránsito.</p>
+                                <h3 class="font-bold text-gray-800 text-xl mt-8 mb-3">Tipos de Visado y Requisitos:</h3>
+                                <ul class="list-disc list-inside space-y-2 ml-4">
+                                    <li>**Visado de Turismo:** Pasaporte válido, billete de ida y vuelta, reserva de hotel, carta de invitación (si aplica).</li>
+                                    <li>**Visado de Negocios:** Pasaporte válido, carta de invitación de la empresa en Guinea Ecuatorial, carta de la empresa en Turquía, billete de ida y vuelta.</li>
+                                    <li>**Visado de Tránsito:** Pasaporte válido, billete aéreo que demuestre el tránsito.</li>
+                                    <li>Pago de la tasa consular.</li>
+                                </ul>
+                                <p class="mt-4">Es fundamental contactar con la sección consular para obtener la información más actualizada sobre los requisitos específicos y los plazos de tramitación, ya que pueden variar.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 order-1 lg:order-2">
+                        <div class="mx-auto lg:mx-0 w-full max-w-sm">
+                            <img src="visados.jpg" alt="Imagen de visados" class="w-full h-auto object-cover rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Legalizaciones -->
+        <section id="legalizaciones-consulares" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5">
+                        <div class="mx-auto lg:mx-0 w-full max-w-sm">
+                            <img src="legalizaciones.jpg" alt="Imagen de documentos legalizados" class="w-full h-auto object-cover rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <div class="py-4 md:py-8"> 
+                            <span class="inline-block bg-accent/10 text-accent text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wider">
+                                TRÁMITES OFICIALES
+                            </span>
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                                Legalizaciones
+                            </h2>
+                            <div class="text-gray-700 space-y-4 text-base md:text-lg leading-relaxed">
+                                <p>La Embajada legaliza documentos emitidos en Turquía para que tengan validez oficial en Guinea Ecuatorial, y viceversa. Esto incluye certificados de nacimiento, matrimonio, defunción, títulos académicos, poderes, etc.</p>
+                                <h3 class="font-bold text-gray-800 text-xl mt-8 mb-3">Proceso de Legalización:</h3>
+                                <ul class="list-disc list-inside space-y-2 ml-4">
+                                    <li>Los documentos deben estar previamente legalizados por el Ministerio de Asuntos Exteriores de Turquía (o el organismo competente en Guinea Ecuatorial).</li>
+                                    <li>Presentación del documento original y una copia.</li>
+                                    <li>Pago de la tasa consular.</li>
+                                    <li>Tiempo de procesamiento: [Ej. 3-5 días hábiles].</li>
+                                </ul>
+                                <p class="mt-4">Se recomienda verificar con antelación si su documento requiere alguna apostilla o legalización adicional antes de presentarlo en la Embajada.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Registro Consular -->
+        <section id="registro-consular-seccion" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 order-2 lg:order-1">
+                        <div class="py-4 md:py-8"> 
+                            <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wider">
+                                COMUNIDAD
+                            </span>
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                                Registro Consular
+                            </h2>
+                            <div class="text-gray-700 space-y-4 text-base md:text-lg leading-relaxed">
+                                <p>El registro consular es un servicio fundamental para los ciudadanos ecuatoguineanos residentes en Turquía. Permite a la Embajada mantener un censo actualizado de sus nacionales y facilitar la asistencia en caso de emergencia, así como la realización de otros trámites consulares.</p>
+                                <h3 class="font-bold text-gray-800 text-xl mt-8 mb-3">Beneficios del Registro:</h3>
+                                <ul class="list-disc list-inside space-y-2 ml-4">
+                                    <li>Facilita la comunicación en situaciones de emergencia (desastres naturales, crisis, etc.).</li>
+                                    <li>Agiliza la renovación de documentos (pasaportes, DNI).</li>
+                                    <li>Permite participar en elecciones y otros procesos cívicos desde el exterior.</li>
+                                    <li>Acceso a información relevante sobre la comunidad y eventos.</li>
+                                </ul>
+                                <p class="mt-4">Se invita a todos los ciudadanos ecuatoguineanos que residen o planean residir en Turquía por un período prolongado a registrarse en la Embajada.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 order-1 lg:order-2">
+                        <div class="mx-auto lg:mx-0 w-full max-w-sm">
+                            <img src="registro_consular.jpg" alt="Imagen de registro consular" class="w-full h-auto object-cover rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Contacto Consular (puedes añadir más detalles si es diferente al contacto general) -->
+        <section id="contacto-consular" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-800 text-center mb-12 section-title">Contacto Consular</h2>
+                <div class="bg-white rounded-lg shadow-md p-8 border border-gray-100 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Información de Contacto Específica</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-phone-alt mt-1 mr-3 w-5 text-primary"></i>
+                                <span>Teléfono Sección Consular: (+90) 312 490 1647 (Ext. [Número])</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-envelope mt-1 mr-3 w-5 text-primary"></i>
+                                <span>Email Consular: consular@emb-guineaecuatorial.com</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-clock mt-1 mr-3 w-5 text-primary"></i>
+                                <span>Horario de Atención: Lunes a Jueves, 09:00 - 12:00 (Recepción), 14:00 - 16:00 (Entrega)</span>
+                            </li>
+                        </ul>
+                        <p class="text-sm text-gray-500 mt-4">Para citas o consultas detalladas, por favor, utilice los canales de contacto específicos de la sección consular.</p>
+                    </div>
+                    <div class="md:col-span-1">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Preguntas Frecuentes (FAQ)</h3>
+                        <p class="text-gray-700">Para resolver dudas comunes sobre pasaportes, visados y otros trámites, le invitamos a visitar nuestra sección de preguntas frecuentes.</p>
+                        <a href="index.html#faq" class="mt-4 inline-block bg-primary text-white font-bold px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">Ver FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto-footer" class="bg-black text-slate-300 pt-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <h4 class="font-bold text-white text-lg mb-4">Embajada de Guinea Ecuatorial</h4>
+                    <p class="text-slate-400">Promoviendo la diplomacia y cooperación entre Guinea Ecuatorial y Turquía.</p>
+                       <div class="flex items-center space-x-4 mt-6">
+                            <a href="#" class="w-10 h-10 bg-slate-700 hover:bg-primary rounded-full flex items-center justify-center transition-colors"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="w-10 h-10 bg-slate-700 hover:bg-primary rounded-full flex items-center justify-center transition-colors"><i class="fab fa-facebook-f"></i></a>
+                       </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-lg mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-slate-400 hover:text-white hover:underline">Inicio</a></li>
+                        <li><a href="la-embajada.html#historia-embajada" class="text-slate-400 hover:text-white hover:underline">Historia de la Embajada</a></li>
+                        <li><a href="la-embajada.html#estructura-equipo" class="text-slate-400 hover:text-white hover:underline">Estructura y Equipo</a></li>
+                        <li><a href="la-embajada.html#mision-vision" class="text-slate-400 hover:text-white hover:underline">Misión y Visión</a></li>
+                        <li><a href="la-embajada.html#contacto-embajada-detallado" class="text-slate-400 hover:text-white hover:underline">Contacto Detallado de la Embajada</a></li>
+                        <li><a href="#pasaportes-consulares" class="text-slate-400 hover:text-white hover:underline">Pasaportes Consulares</a></li>
+                        <li><a href="#visados-consulares" class="text-slate-400 hover:text-white hover:underline">Visados Consulares</a></li>
+                        <li><a href="#legalizaciones-consulares" class="text-slate-400 hover:text-white hover:underline">Legalizaciones Consulares</a></li>
+                        <li><a href="#registro-consular-seccion" class="text-slate-400 hover:text-white hover:underline">Registro Consular</a></li>
+                        <li><a href="index.html#noticias" class="text-slate-400 hover:text-white hover:underline">Noticias</a></li>
+                        <li><a href="index.html#comunidad" class="text-slate-400 hover:text-white hover:underline">Comunidad</a></li>
+                        <li><a href="index.html#contacto" class="text-slate-400 hover:text-white hover:underline">Contacto Principal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-lg mb-4">Contacto</h4>
+                    <ul class="space-y-3 text-slate-400">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 w-4"></i><span>[Dirección de la Embajada], Ankara, Turquía</span></li>
+                        <li class="flex items-start"><i class="fas fa-phone-alt mt-1 mr-3 w-4"></i><span>(+90) 312 490 1647</span></li>
+                        <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-3 w-4"></i><span>info@emb-guineaecuatorial.com</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-lg mb-4">Horario Consular</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li>Lunes - Viernes: <span class="font-semibold text-white">09:00 - 14:00</span></li>
+                        <li>Sábados y Domingos: <span class="font-semibold text-white">Cerrado</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 py-6 border-t border-slate-800 text-center text-sm text-slate-500">
+                <p>© 2025 Embajada de Guinea Ecuatorial en Turquía. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"], a[href^="index.html#"], a[href^="la-embajada.html#"], a[href^="servicios-consulares.html#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetHref = this.getAttribute('href');
+                const currentPath = window.location.pathname.split('/').pop(); // e.g., "index.html" or "la-embajada.html"
+
+                // Determine if the link is to a section on the *current* page
+                // Or if it's to a section on another page
+                const isInternalAnchor = targetHref.startsWith('#');
+                const isAnchorOnCurrentPage = targetHref.includes(currentPath) && targetHref.includes('#');
+
+                if (isInternalAnchor || isAnchorOnCurrentPage) {
+                    e.preventDefault(); // Prevent default jump behavior
+                    let targetId;
+                    if (isInternalAnchor) {
+                        targetId = targetHref; // e.g., "#inicio"
+                    } else {
+                        targetId = '#' + targetHref.split('#')[1]; // e.g., "index.html#inicio" -> "#inicio"
+                    }
+                    
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start' // Align the top of the element with the top of the viewport
+                        });
+                    }
+
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        // Also close any open mobile dropdowns
+                        document.querySelectorAll('#mobile-menu .dropdown-menu.show').forEach(menu => {
+                            menu.classList.remove('show');
+                            const toggleBtn = document.getElementById(menu.getAttribute('aria-labelledby'));
+                            if (toggleBtn) {
+                                toggleBtn.setAttribute('aria-expanded', 'false');
+                                toggleBtn.querySelector('svg')?.classList.remove('rotate-180');
+                            }
+                        });
+                    }
+                }
+                // If the link is to another page (e.g., la-embajada.html without #), let the default behavior happen
+                // The smooth scroll for anchors on the *target* page will handle it once loaded.
+            });
+        });
+        
+        // Language switcher (dummy functionality)
+        document.querySelectorAll('[data-lang]').forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                alert('Idioma cambiado a: ' + lang);
+            });
+        });
+        
+        // Tabs functionality (not used on this specific page, but kept for consistency)
+        document.querySelectorAll('[data-tab]').forEach(button => {
+            button.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remove existing active classes
+                document.querySelectorAll('.tab-active').forEach(tab => {
+                    tab.classList.remove('tab-active');
+                });
+                
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Add active class to the clicked tab and corresponding content
+                this.classList.add('tab-active');
+                document.getElementById(tabId).classList.remove('hidden');
+            });
+        });
+
+        // --- Lógica para los Dropdowns ---
+
+        // Helper functions for dropdowns
+        function showDropdown(menu, button) {
+            menu.classList.add('show');
+            button.setAttribute('aria-expanded', 'true');
+            button.querySelector('svg')?.classList.add('rotate-180');
+        }
+
+        function hideDropdown(menu, button) {
+            menu.classList.remove('show');
+            button.setAttribute('aria-expanded', 'false');
+            button.querySelector('svg')?.classList.remove('rotate-180');
+        }
+
+        function toggleDropdown(menu, button) {
+            const isShown = menu.classList.contains('show');
+            // Close any other open dropdowns (optional, but good UX)
+            document.querySelectorAll('.dropdown-menu.show').forEach(openMenu => {
+                if (openMenu !== menu) {
+                    openMenu.classList.remove('show');
+                    const relatedToggle = document.getElementById(openMenu.getAttribute('aria-labelledby'));
+                    if (relatedToggle) {
+                        relatedToggle.setAttribute('aria-expanded', 'false');
+                        relatedToggle.querySelector('svg')?.classList.remove('rotate-180');
+                    }
+                }
+            });
+
+            if (isShown) {
+                hideDropdown(menu, button);
+            } else {
+                showDropdown(menu, button);
+            }
+        }
+
+        // Desktop Dropdowns (handling mouseenter/mouseleave)
+        document.querySelectorAll('.header-nav .dropdown').forEach(dropdownContainer => {
+            const toggleButton = dropdownContainer.querySelector('button.nav-link');
+            const dropdownMenu = dropdownContainer.querySelector('.dropdown-menu');
+            let timeoutId;
+
+            if (toggleButton && dropdownMenu) {
+                toggleButton.addEventListener('mouseenter', () => {
+                    clearTimeout(timeoutId);
+                    showDropdown(dropdownMenu, toggleButton);
+                });
+
+                dropdownContainer.addEventListener('mouseleave', () => {
+                    timeoutId = setTimeout(() => {
+                        hideDropdown(dropdownMenu, toggleButton);
+                    }, 200); // Small delay to allow mouse movement
+                });
+
+                dropdownMenu.addEventListener('mouseenter', () => {
+                    clearTimeout(timeoutId); // Keep open if mouse enters menu
+                });
+
+                dropdownMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hideDropdown(dropdownMenu, toggleButton);
+                    });
+                });
+            }
+        });
+
+        // Mobile Dropdowns (handling click)
+        document.querySelectorAll('#mobile-menu .dropdown').forEach(dropdownContainer => {
+            const toggleButton = dropdownContainer.querySelector('button.dropdown-toggle');
+            const dropdownMenu = dropdownContainer.querySelector('.dropdown-menu');
+
+            if (toggleButton && dropdownMenu) {
+                toggleButton.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent click from propagating to document
+                    toggleDropdown(dropdownMenu, toggleButton);
+                });
+                // Links inside mobile dropdowns are handled by the global smooth scroll listener, which also closes the mobile menu
+            }
+        });
+
+        // Close all dropdowns if clicked outside
+        document.addEventListener('click', (e) => {
+            document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                const toggleBtn = document.getElementById(menu.getAttribute('aria-labelledby'));
+                if (toggleBtn && !toggleBtn.contains(e.target) && !menu.contains(e.target)) {
+                    hideDropdown(menu, toggleBtn);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
